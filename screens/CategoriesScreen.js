@@ -1,11 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Button,  FlatList , StyleSheet } from "react-native";
 
 const CategoriesScreen = props => {
+  console.log(props);
   return (
-    <View style={styles.screen}>
-      <Text style= {{ fontFamily: 'open-sans-bold'}}> The Category Screen</Text>
-    </View>
+   <FlatList numColumns={1}  />
   );
 };
 
