@@ -6,11 +6,7 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
-  Platform,
-} from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import Color from "../constants/Color";
-
+  } from "react-native";
 import { CATEGORIES } from "../data/dummy-data";
 
 const CategoriesScreen = (props) => {
@@ -22,7 +18,7 @@ const CategoriesScreen = (props) => {
           props.navigation.navigate({
             routeName: 'CategoryMeals',
             params: {
-              categorytId: itemData.item.id                                // Sending the data to the next screen
+              categoryId: itemData.item.id                                // Sending the data to the next screen
             }})
           }}
       >
@@ -40,10 +36,6 @@ const CategoriesScreen = (props) => {
 
 CategoriesScreen.navigationOptions = {
   headerTitle: "Meal Categories",
-  headerStyle: {
-    backgroundColor: Platform.OS === "android" ? Color.primaryColor : "white",
-  },
-  headerTintColor: Platform.OS === "android" ? "white" : Color.primaryColor,
 };
 
 const styles = StyleSheet.create({
