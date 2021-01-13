@@ -20,7 +20,7 @@ const MealsNavigator = createStackNavigator(
     },
     MealDetail: {
       screen: MealDetailScreen,
-    }
+    },
   },
   // {
   // initialRouteName: 'Categories'
@@ -29,13 +29,10 @@ const MealsNavigator = createStackNavigator(
     mode: "modal",
   },
   {
-    
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor:
-          Platform.OS === "android" ? Color.primaryColor : "white",
+        backgroundColor: Platform.OS === "android" ? Color.primaryColor : Color.blackColor,
       },
-
       headerTintColor: Platform.OS === "android" ? "white" : Color.primaryColor,
     },
   }

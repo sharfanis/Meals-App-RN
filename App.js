@@ -14,6 +14,7 @@ const fetchFonts = () => {
     "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
     "imbue": require("./assets/fonts/Imbue.ttf"),
     "imbue-bold" : require("./assets/fonts/Imbue-Bold.ttf"),
+    "bangers": require("./assets/fonts/Bangers-Regular.ttf")
   });
 };
 
