@@ -29,7 +29,8 @@ const CategoriesMealsScreen = (props) => {
   );
 };
 
-// Dynamically extracting navigationOptions.
+// Dynamically extracting navigationOptions. It used because you can extract title above but then it won't be accessible .
+//Please check categories screen navigation options fro what i am talking about.
 CategoriesMealsScreen.navigationOptions = navigationData => {
  const catID = navigationData.navigation.getParam('categoryId');
  const selectedCategory = CATEGORIES.find(cat => cat.id === catID);
