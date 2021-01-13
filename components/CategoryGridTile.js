@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textStyling: {
-      fontFamily: 'imbue'
+      fontFamily: 'imbue-bold'
   }
 });
 
