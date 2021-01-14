@@ -8,7 +8,7 @@ const MealDetailScreen = props => {
   const mealDetails = props.navigation.getParam("steps");
   return (
     <View style={styles.screen}>
-      <Text>{mealDetails}</Text>
+      <Text style={{fontFamily:'imbue-bold'}}>{mealDetails}</Text>
     </View>
   );
 };

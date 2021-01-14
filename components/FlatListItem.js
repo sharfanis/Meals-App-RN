@@ -27,7 +27,7 @@ const FlatListItem = (props) => {
         <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
           <ImageBackground source={{ uri: props.image }} style={styles.bgImage}>
           <View style={styles.titleContainer} >
-            <Text style={styles.textStyle} numberOfLines={1}>
+            <Text style={styles.title} numberOfLines={1}>
               {props.title}
             </Text>
             </View>
@@ -53,9 +53,6 @@ const styles = StyleSheet.create({
     fontFamily: "bangers",
     fontSize: 22,
     color: "white",
-    backgroundColor: "rgba(0,0,0,0.5)",
-    paddingVertical: 7,
-    paddingHorizontal: 12,
     textAlign: "center",
   },
   textGib: {
@@ -86,7 +83,13 @@ const styles = StyleSheet.create({
   titleContainer:{
     backgroundColor: 'rgba(0,0,0,0.5)',
     paddingVertical: 5,
-    paddingHorizontal: 12 
+    paddingHorizontal: 12
+  } ,
+  title: {
+    fontFamily: 'bangers',
+    fontSize: 20,
+    color: 'white',
+    textAlign: 'center'
   }
 });
 
