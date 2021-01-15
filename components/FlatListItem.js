@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ccc",
     borderRadius: 10,
     overflow: "hidden",
+    marginVertical: 10
   },
   mealHeader: {
     height: "85%",
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   } ,
   title: {
-    fontFamily: 'bangers',
+    fontFamily: "bangers",
     fontSize: 20,
     color: 'white',
     textAlign: 'center'

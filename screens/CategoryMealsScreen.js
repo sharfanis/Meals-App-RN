@@ -29,7 +29,7 @@ const CategoriesMealsScreen = (props) => {
           props.navigation.navigate({
             routeName: "MealDetail",
             params: {
-              steps: itemData.item.steps, // Sending the data to the next screen
+              mealId: itemData.item.id, // Sending the data to the next screen
             },
           });
         }}
@@ -44,7 +44,7 @@ const CategoriesMealsScreen = (props) => {
         data={displayedMeals}
         keyExtractor={(item) => item.id}
         renderItem={renderMeals}
-        style={{width:'100%'}}
+        style={{width:'95%'}}
       />
     </View>
   );
