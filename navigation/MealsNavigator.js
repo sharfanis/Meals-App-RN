@@ -51,13 +51,18 @@ const MealsNavigator = createStackNavigator(
   //   mode: "modal",
   // },
 
-  defaultNavOptions
+   defaultNavOptions
 );
 
 // Making a new Favorite Meals Navigator.
 const FavoriteMealsNavigator = createStackNavigator(
   {
-    Favorites: FavoritesScreen,
+    Favorites: {
+     screen: FavoritesScreen ,
+     navigationOptions: {
+       headerTitle: 'My Favorite Recipes'
+     }
+    },
     MealDetail: MealDetailScreen,
   },
   defaultNavOptions
