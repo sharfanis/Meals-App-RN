@@ -4,6 +4,9 @@ import * as Font from "expo-font";
 import   AppLoading  from "expo-app-loading";
 import MealsNavigator from "./navigation/MealsNavigator";
 import { enableScreens } from "react-native-screens";
+import { LogBox } from 'react-native';
+
+
 
 // Telling react to use optmized screen component. its a good practice. 
  enableScreens();
@@ -19,9 +22,11 @@ const fetchFonts = () => {
 };
 
 export default function App() {
+  // Ignoring All warnings except errors.
+  LogBox.ignoreAllLogs(true);
   const [fontLoaded, setFontLoaded] = useState(false);
 
-  if (!fontLoaded) {
+  if (!fontLoaded) { 
     return <AppLoading
         startAsync={fetchFonts}
         onFinish={() => setFontLoaded(true)}
