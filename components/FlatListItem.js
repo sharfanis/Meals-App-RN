@@ -9,6 +9,7 @@ import {
   ImageBackground,
 } from "react-native";
 import Color from "../constants/Color";
+import DefaultText from "./DefaultText";
 
 const FlatListItem = (props) => {
   let TouchCmp = TouchableOpacity;
@@ -34,11 +35,11 @@ const FlatListItem = (props) => {
           </ImageBackground>
         </View>
         <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
-          <Text style={styles.textGib}>Time:{props.duration}m</Text>
-          <Text style={styles.textGib}>{props.complexity.toUpperCase()}</Text>
-          <Text style={styles.textGib}>
+          <DefaultText>Time:{props.duration}m</DefaultText>
+          <DefaultText>{props.complexity.toUpperCase()}</DefaultText>
+          <DefaultText>
             Style:{props.affordability.toUpperCase()}
-          </Text>
+          </DefaultText>
         </View>
       </TouchableOpacity>
     </View>
@@ -54,10 +55,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: "white",
     textAlign: "center",
-  },
-  textGib: {
-    fontFamily: "open-sans-bold",
-    color: "purple",
   },
   mealItem: {
     height: 200,
