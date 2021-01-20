@@ -6,7 +6,7 @@ import CategoriesScreen from "../screens/CategoriesScreen";
 import CategoriesMealsScreen from "../screens/CategoryMealsScreen";
 import MealDetailScreen from "../screens/MealDetailScreen";
 import FilterScreen from "../screens/FilterScreen";
-import { Platform } from "react-native";
+import { Platform , Text} from "react-native";
 import Color from "../constants/Color";
 import FavoritesScreen from "../screens/FavoritesScreen";
 import { Ionicons } from "@expo/vector-icons";
@@ -83,12 +83,13 @@ const tabConfig = {
         );
       },
       tabBarColor: Color.primaryColor,
+      tabBarLabel: Platform.OS ==='android' ? <Text style={{fontFamily: 'open-sans-bold'}}>Meals!!!</Text> : 'Meals'
     },
   },
   Favorites: {
     screen: FavoriteMealsNavigator,
     navigationOptions: {
-      tabBarLabel: "Favorites!",
+      tabBarLabel: Platform.OS ==='android' ? <Text style={{fontFamily: 'open-sans-bold'}}>Favorites!!!</Text> : 'Favorites',
       tabBarIcon: (tabInfo) => {
         return <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />;
       },
@@ -101,7 +102,7 @@ const tabConfig = {
 const MealFavTabNavigator =
   Platform.OS === "android"
     ? createMaterialBottomTabNavigator(tabConfig, {
-        activeColor: Colors.accentColor,
+        activeTintColor: 'white',
         shifting: true,
       })
     : createBottomTabNavigator(tabConfig, {
