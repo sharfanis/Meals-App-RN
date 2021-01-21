@@ -1,16 +1,11 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Image,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import { MEALS } from "../data/dummy-data";
 // IMport Buttons with an S not Button .
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
 import DefaultText from "../components/DefaultText";
+import { useSelector } from "react-redux";
 
 const ListItem = (props) => {
   return (
@@ -21,6 +16,9 @@ const ListItem = (props) => {
 };
 
 const MealDetailScreen = (props) => {
+  //Gettting the MEALS from the store (REDUX).
+  const availabelMeals = useSelector((state) => state.meals.filteredMeals);
+
   const mealDetailId = props.navigation.getParam("mealId");
   const mealDetails = MEALS.find((x) => x.id === mealDetailId);
   return (

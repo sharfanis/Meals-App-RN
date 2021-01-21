@@ -1,5 +1,6 @@
 import React from "react";
-import { CATEGORIES, MEALS } from "../data/dummy-data";
+import { useSelector } from "react-redux";
+import { CATEGORIES } from "../data/dummy-data";
 import MealList from "../components/MealList";
 
 const CategoriesMealsScreen = (props) => {
@@ -7,14 +8,20 @@ const CategoriesMealsScreen = (props) => {
   const catID = props.navigation.getParam("categoryId");
   //const selectedCategory = CATEGORIES.find((cat) => cat.id === catID).title;
 
-  // Fetching all the meals array with the category ID.
+  // REDUX way of gertting meals from the store.
+  // state is fine but meals is the same variable we selected inside the app .js for root reducer.
+  // this will then go inside the mealReducer and from there we can get filteredMeals.
+  //this will select the slice of our state , not the complete state. check out the meals.js file inside reducers.
+  const availabelMeals = useSelector(state => state.meals.filteredMeals);
 
-  const displayedMeals = MEALS.filter(
+
+  // Fetching all the meals array with the category ID.
+    const displayedMeals = availabelMeals.filter(
     (meal) => meal.categoryIds.indexOf(catID) >= 0
   );
- // The navigation for meal detail is provided inside the navigator which allows the control to go from catyegory meals to detail
-  // page but when the MealList is plucked out it won't work . solution is to pass the NAVIGATION as a prop so that it can be used. 
-  return <MealList listData={displayedMeals} navigation={props.navigation}/>;
+  // The navigation for meal detail is provided inside the navigator which allows the control to go from catyegory meals to detail
+  // page but when the MealList is plucked out it won't work . solution is to pass the NAVIGATION as a prop so that it can be used.
+  return <MealList listData={displayedMeals} navigation={props.navigation} />;
 };
 
 // Dynamically extracting navigationOptions. It used because you can extract title above but then it won't be accessible .
