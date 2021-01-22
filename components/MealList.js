@@ -17,6 +17,7 @@ const MealList = (props) => {
               routeName: "MealDetail",
               params: {
                 mealId: itemData.item.id, // Sending the data to the next screen
+                mealTitle: itemData.item.title
               },
             });
           }}
