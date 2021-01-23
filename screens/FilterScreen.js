@@ -4,6 +4,8 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
 import Color from "../constants/Color";
 import SharedSwitch from "../components/sharedSwitch";
+import { useSelector, useDispatch } from "react-redux";
+import { setFilters } from "../store/actions/mealAction";
 
 const FilterScreen = (props) => {
   // Manage States of the Switch button
@@ -17,22 +19,37 @@ const FilterScreen = (props) => {
   const { navigation } = props;
 
   // To have a communication between your state and navigation .this tis way
-  // We wrapped our function with useCallBack so that it only updates when our state changes and only recreates if the dependency changes. 
-  const saveFilters = useCallback(() => {
+  // We wrapped our function with useCallBack so that it only updates when our state changes and only recreates if the dependency changes.
+  // const saveFilters = useCallback(() => {
+  //   const appliedFilter = {
+  //     glutenFree: isGluten,
+  //     lactoseFree: isLactoseFree,
+  //     vegan: isVegan,
+  //     vegeterian: isVegeterian,
+  //   };
+  //   console.log('applied Filters', appliedFilter);
+  //   // So this function will only be recreated only when these 4 states changes. this comes in useCallback Hook.
+  // }, [isGluten, isLactoseFree , isVegeterian, isVegan]);
+  // New logic lies below as applyFiltersHandler.
+
+  // We'll use dispatch to dispatch an action.
+  const dispatch = useDispatch();
+  // Also we can't use useDispatch directly it has be inside a function component and then have to be used.
+  // TO prevent infinite loop we'll use useCallBack and will use dispatch and the mealid as the dependency.
+  const applyFiltersdHandler = useCallback(() => {
     const appliedFilter = {
       glutenFree: isGluten,
       lactoseFree: isLactoseFree,
       vegan: isVegan,
-      veg: isVegeterian,
+      vegeterian: isVegeterian,
     };
-    console.log('applied Filters', appliedFilter);
-    // So this function will only be recreated only when these 4 states changes. this comes in useCallback Hook.
-  }, [isGluten, isLactoseFree , isVegeterian, isVegan]);
+    dispatch(setFilters(appliedFilter));
+  }, [dispatch, isGluten, isLactoseFree, isVegeterian, isVegan]);
 
   // WE dont' want useEffect to work after every rerender in component only when navigation changes so we used array destrcutiring .
   useEffect(() => {
-    navigation.setParams({ save : saveFilters });
-  }, [saveFilters]);
+    navigation.setParams({ save: applyFiltersdHandler });
+  }, [applyFiltersdHandler]);
 
   return (
     <View style={styles.screen}>
@@ -94,7 +111,7 @@ FilterScreen.navigationOptions = (navData) => {
           title="Save"
           iconName="ios-save"
           onPress={() => {
-            navData.navigation.getParam('save')();
+            navData.navigation.getParam("save")();
           }}
         ></Item>
       </HeaderButtons>
